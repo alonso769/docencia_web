@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficina de Docencia e Investigación - DIRIS Lima Centro</title>
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Estilos base para la página */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Tema de colores Granate/Rojo Peruano y Gris */
+        .color-primary { background-color: #B31B1B; }
+        .text-primary { color: #B31B1B; }
+        .border-primary { border-color: #B31B1B; }
+        
+        /* Estilos de la cabecera */
+        .header-bg {
+            /* Placeholder: imagen de fondo corporativa */
+            background-image: url('https://placehold.co/1280x300/1e293b/ffffff?text=OFICINA+DE+DOCENCIA+E+INVESTIGACIÓN');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Efecto de animación para las tarjetas de información y sistemas */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Estilo para los iconos grandes de la cabecera */
+        .icon-metric {
+            font-size: 2.5rem;
+            color: #ffffff;
+            background-color: rgba(179, 27, 27, 0.8);
+            padding: 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el separador animado */
+        .separator-line {
+            height: 3px;
+            width: 100px;
+            background-color: #B31B1B;
+            transition: width 0.5s ease-in-out;
+            margin: 10px auto;
+        }
+        
+        /* Estilos para el modal */
+        .modal {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar/Header Fijo -->
+    <header class="bg-white shadow fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+                <span class="text-xl font-bold text-gray-800">DIRIS Docencia e Investigación</span>
+            </div>
+            <nav class="space-x-4 text-sm font-medium">
+                <a href="#convenios" class="text-gray-600 hover:text-primary transition duration-150">Convenios</a>
+                <a href="#proyectos" class="text-gray-600 hover:text-primary transition duration-150">Proyectos</a>
+                <a href="#formacion" class="text-gray-600 hover:text-primary transition duration-150">Formación</a>
+                <a href="#sistemas" class="text-gray-600 hover:text-primary transition duration-150">Sistemas</a>
+                <a href="#" class="px-3 py-1 color-primary text-white rounded-full hover:bg-red-700 transition duration-150">Boletín</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal (Banner) -->
+    <section class="header-bg relative pt-20">
+        <!-- Overlay claro usando el color primario -->
+        <div class="bg-primary/80 p-10 text-white text-center rounded-b-lg shadow-xl pt-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-2">
+                
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-gray-100 mb-6">
+                DIRIS LIMA CENTRO | Gestión de Conocimiento y Desarrollo del Talento Humano
+            </p>
+            <div class="separator-line mx-auto"></div>
+
+            <!-- Métricas Clave (Animadas) -->
+            <div class="flex justify-center space-x-8 mt-8">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-handshake icon-metric mb-2"></i>
+                    <!-- ACTUALIZADO: CONVENIOS VIGENTES -->
+                    <p class="text-3xl font-bold" id="metric-convenios">0</p>
+                    <p class="text-sm text-gray-200">Convenios Vigentes</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-flask icon-metric mb-2"></i>
+                    <p class="text-3xl font-bold" id="metric-proyectos">0</p>
+                    <p class="text-sm text-gray-200">Proyectos Ingresados (2025)</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-stethoscope icon-metric mb-2"></i>
+                    <p class="text-3xl font-bold" id="metric-alumnos">0</p>
+                    <p class="text-sm text-gray-200">Alumnos en Campos Clínicos (2026)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor Principal de Contenido -->
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Sección de Convenios -->
+        <section id="convenios" class="mb-16">
+            <h2 class="text-3xl font-bold text-primary mb-6 border-b border-primary pb-2">
+                <i class="fas fa-file-contract mr-2"></i> Gestión de Convenios
+            </h2>
+            <p class="mb-8 text-gray-600">Monitoreo del estado de los acuerdos institucionales con universidades nacionales y privadas, clave para la docencia.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Tarjeta 1: Balance de Convenios (Circular) - ACTUALIZADO -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-primary">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Balance Total de Convenios (Nacionales y Privadas)</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="w-1/2 h-32 flex justify-center items-center">
+                             <!-- Gráfico de Dona simple (simulado) -->
+                             <!-- Total = 41. Vigentes: 31/41 = 75.6%. Vencidos: 10/41 = 24.4% -->
+                            <div class="relative h-28 w-28 rounded-full flex items-center justify-center bg-gray-300" style="background: conic-gradient(#B31B1B 0% 75.6%, #6C757D 75.6% 100%);">
+                                <div class="absolute h-20 w-20 bg-white rounded-full"></div>
+                                <span class="text-primary text-xl font-bold z-10">41</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 space-y-2 text-sm">
+                            <p><span class="inline-block w-3 h-3 bg-primary rounded-full mr-2"></span> Vigentes: <span class="font-bold">31</span> (75.6%)</p>
+                            <p><span class="inline-block w-3 h-3 bg-gray-600 rounded-full mr-2"></span> Vencidos: <span class="font-bold">10</span> (24.4%)</p>
+                            <p class="text-xs text-gray-500 mt-2">Dato clave: La renovación de los 10 convenios vencidos es prioritaria.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Requerimientos de Equipamiento (Sin Montos) -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-gray-500">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Requerimientos de Equipamiento</h3>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-laptop-medical text-4xl text-gray-500"></i>
+                        <div>
+                            <p class="text-3xl font-extrabold text-primary">798</p>
+                            <p class="text-sm text-gray-600">Equipos totales solicitados (Universidades)</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-700">Requerimientos Pendientes:</p>
+                        <p class="text-lg font-bold text-red-600">2 Universidades</p>
+                        <p class="text-xs text-gray-500">Gestión pendiente con USJB y USMP (Enferm. y O.)</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Convenios Nacionales Destacados -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-primary">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Convenios Nacionales Destacados</h3>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex justify-between items-center border-b pb-1">
+                            <span class="font-medium text-gray-700">UNMSM (Medicina)</span>
+                            <span class="text-xs text-green-600 font-semibold">Vigente (2027)</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b pb-1">
+                            <span class="font-medium text-gray-700">UNFV (Medicina)</span>
+                            <span class="text-xs text-green-600 font-semibold">Vigente (2027)</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b pb-1">
+                            <span class="font-medium text-gray-700">UPN / UCV / UTP</span>
+                            <span class="text-xs text-green-600 font-semibold">Vigente (2026+)</span>
+                        </li>
+                        <li class="text-center pt-2">
+                            <button onclick="showDetails('convenios')" class="text-xs text-primary hover:underline font-medium">Ver Reporte Completo</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección de Investigación -->
+        <section id="proyectos" class="mb-16">
+            <h2 class="text-3xl font-bold text-primary mb-6 border-b border-primary pb-2">
+                <i class="fas fa-search mr-2"></i> Producción y Proyectos de Investigación
+            </h2>
+            <p class="mb-8 text-gray-600">Monitoreo de la producción científica y la gestión de proyectos internos de la Unidad Funcional.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Tarjeta 4: Proyectos Totales Ingresados -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-primary">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Total de Proyectos Ingresados</h3>
+                    <p class="text-5xl font-extrabold text-primary" id="value-proyectos-total">226</p>
+                    <p class="text-sm text-gray-600 mt-1">Suma de 2024 (100) y 2025 (126)</p>
+                    <div class="mt-4 pt-3 border-t">
+                        <p class="text-sm font-semibold text-gray-700">Informes Finales:</p>
+                        <p class="text-xl font-bold text-gray-800">28</p>
+                        <p class="text-xs text-gray-500">Acumulado 2024-2025 (30% de tasa de finalización)</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5: Crecimiento Interanual -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-gray-500">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Crecimiento en Proyectos (2024 vs 2025)</h3>
+                    <p class="text-5xl font-extrabold text-green-600">+26%</p>
+                    <p class="text-sm text-gray-600 mt-1">Se proyecta un incremento sostenido en la generación de proyectos.</p>
+                    <div class="mt-4 pt-3 border-t">
+                        <p class="text-sm font-semibold text-gray-700">Proyectos 2024:</p>
+                        <p class="text-lg font-bold text-gray-800">100</p>
+                        <p class="text-sm font-semibold text-gray-700 mt-2">Proyectos 2025:</p>
+                        <p class="text-lg font-bold text-gray-800">126</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6: Acceso Directo a Publicaciones -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-primary text-center flex flex-col justify-center items-center">
+                    <i class="fas fa-file-pdf text-5xl text-primary mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Repositorio de Publicaciones</h3>
+                    <p class="text-sm text-gray-600 mb-4">Accede a los informes y publicaciones científicas derivadas de los proyectos.</p>
+                    <a href="#" class="px-4 py-2 color-primary text-white rounded-full hover:bg-red-700 transition duration-150 text-sm font-medium">Ir al Repositorio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Campos de Formación -->
+        <section id="formacion" class="mb-16">
+            <h2 class="text-3xl font-bold text-primary mb-6 border-b border-primary pb-2">
+                <i class="fas fa-hospital-user mr-2"></i> Campos Clínicos y Formación
+            </h2>
+            <p class="mb-8 text-gray-600">Análisis de la proyección de plazas y estudiantes en los campos clínicos de la DIRIS (2025-2026).</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Tarjeta 7: Total Proyectado -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-primary text-center">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Total Proyectado en Campos Clínicos</h3>
+                    <p class="text-6xl font-extrabold text-primary" id="value-alumnos-2026">2,582</p>
+                    <p class="text-lg font-medium text-gray-600">Estudiantes proyectados para 2026</p>
+                    <div class="mt-4 pt-3 border-t">
+                        <p class="text-sm font-semibold text-gray-700">Base 2025: 1,580 alumnos</p>
+                        <p class="text-xl font-bold text-green-600">Crecimiento Total: +1,002 estudiantes</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 8: Áreas de Mayor Crecimiento -->
+                <div class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-gray-500">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Top 3 de Mayor Crecimiento (2025-2026)</h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex justify-between items-center p-2 rounded-md bg-red-50">
+                            <span class="font-medium text-gray-800"><i class="fas fa-heartbeat text-primary mr-2"></i> Enfermería</span>
+                            <span class="text-primary font-extrabold">+244</span>
+                        </li>
+                        <li class="flex justify-between items-center p-2 rounded-md bg-red-50">
+                            <span class="font-medium text-gray-800"><i class="fas fa-user-md text-primary mr-2"></i> Medicina Humana</span>
+                            <span class="text-primary font-extrabold">+205</span>
+                        </li>
+                        <li class="flex justify-between items-center p-2 rounded-md bg-red-50">
+                            <span class="font-medium text-gray-800"><i class="fas fa-brain text-primary mr-2"></i> Psicología</span>
+                            <span class="text-primary font-extrabold">+150</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-center">
+                        <button onclick="showDetails('formacion')" class="text-xs text-primary hover:underline font-medium">Ver Gráfico de Crecimiento Detallado</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Sección de Sistemas Integrados -->
+        <section id="sistemas" class="mb-16">
+            <h2 class="text-3xl font-bold text-primary mb-6 border-b border-primary pb-2">
+                <i class="fas fa-tools mr-2"></i> Sistemas Integrados y Gestión
+            </h2>
+            <p class="mb-8 text-gray-600">Acceso directo a las plataformas de inteligencia de datos y sistemas de gestión para la Docencia e Investigación.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                
+                <!-- Tarjeta Sistema 1: Power BI (Dashboard 1) -->
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiZTBmYzc2ODQtNjVmNi00ODY4LWI3OTctNmZmNWRjZDU1NGFiIiwidCI6Ijk4MzIyM2QxLTE5N2QtNDAwYS04ZDVhLTE4ZWQ5ZTU5YjMzYyIsImMiOjR9" target="_blank" class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-blue-600 hover:border-blue-800 transition duration-150">
+                    <i class="fas fa-chart-bar text-4xl text-blue-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-1 text-gray-800">Panel de Indicadores (Power BI 1)</h3>
+                    <p class="text-sm text-gray-600">Monitoreo de indicadores clave de la Unidad Funcional.</p>
+                </a>
+                
+                <!-- Tarjeta Sistema 2: Power BI (Dashboard 2) -->
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiOTBlZWNjMTctYWY5YS00YmQ2LWE3NzktYWU0ZDg3YTMzYTVhIiwidCI6Ijk4MzIyM2QxLTE5N2QtNDAwYS04ZDVhLTE4ZWQ5ZTU5YjMzYyIsImMiOjR9" target="_blank" class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-blue-600 hover:border-blue-800 transition duration-150">
+                    <i class="fas fa-database text-4xl text-blue-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-1 text-gray-800">Panel de Proyectos y Producción (Power BI 2)</h3>
+                    <p class="text-sm text-gray-600">Seguimiento detallado de proyectos de investigación.</p>
+                </a>
+
+                <!-- Tarjeta Sistema 3: Biblioteca en Línea -->
+                <a href="https://repositorio-docencia-diris-lima-centro.onrender.com" target="_blank" class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-green-600 hover:border-green-800 transition duration-150">
+                    <i class="fas fa-book-reader text-4xl text-green-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-1 text-gray-800">Biblioteca Repositorio en Línea</h3>
+                    <p class="text-sm text-gray-600">Acceso a la biblioteca virtual de informes, tesis y publicaciones de la DIRIS.</p>
+                </a>
+                
+                <!-- Tarjeta Sistema 4: Registro Campos de Formación -->
+                <a href="https://ufdi-diris-lima-centro-nine.vercel.app/" target="_blank" class="card p-6 bg-white rounded-lg shadow-md border-t-4 border-yellow-600 hover:border-yellow-800 transition duration-150">
+                    <i class="fas fa-user-check text-4xl text-yellow-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-1 text-gray-800">Sistema de Registro de Campos</h3>
+                    <p class="text-sm text-gray-600">Plataforma para la gestión y registro de plazas de formación clínica.</p>
+                </a>
+
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer (Diseño más claro) -->
+    <footer class="bg-gray-100 text-gray-700 py-8 border-t border-gray-300">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm font-semibold">&copy; 2025 DIRIS Lima Centro | Oficina de Docencia e Investigación.</p>
+            <p class="text-xs mt-2 text-gray-500">Instrumentos de Gestión y Monitoreo Desarrollados por UFDI.</p>
+        </div>
+    </footer>
+
+    <!-- Modal para ver detalles (simulado) -->
+    <div id="detail-modal" class="modal fixed inset-0 hidden items-center justify-center p-4">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-2xl">
+            <h3 id="modal-title" class="text-2xl font-bold text-primary mb-4">Detalles del Reporte</h3>
+            <p id="modal-content-text" class="text-gray-700 mb-6"></p>
+            <button onclick="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-150">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Data principal (para inyectar en las métricas)
+        const metrics = {
+            // ACTUALIZADO: 31 Vigentes, 10 Vencidos.
+            conveniosVigentes: 31, 
+            proyectos2025: 126,
+            alumnos2026: 2582,
+        };
+        
+        // CÁLCULOS PARA LA GRÁFICA CIRCULAR DE CONVENIOS
+        const totalConvenios = metrics.conveniosVigentes + 10; // 31 + 10 = 41
+        const porcentajeVigentes = (metrics.conveniosVigentes / totalConvenios) * 100; // 75.6%
+        const porcentajeVencidos = (10 / totalConvenios) * 100; // 24.4%
+
+        // Función de animación de conteo
+        function animateValue(id, start, end, duration) {
+            if (start === end) {
+                document.getElementById(id).innerHTML = end;
+                return;
+            }
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            
+            const obj = document.getElementById(id);
+            const timer = setInterval(() => {
+                current += increment;
+                obj.innerHTML = current.toLocaleString('es-PE');
+                if (current === end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        // Función para mostrar el modal de detalles
+        function showDetails(section) {
+            const modal = document.getElementById('detail-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content-text');
+
+            // Contenido simulado para los modales
+            if (section === 'convenios') {
+                title.textContent = "Reporte Completo de Convenios";
+                content.innerHTML = "Aquí se cargaría la tabla detallada de convenios nacionales y privados (Vigentes/Vencidos).";
+            } else if (section === 'formacion') {
+                title.textContent = "Gráfico de Crecimiento de Campos Clínicos";
+                content.innerHTML = "Aquí se cargaría el gráfico de barras apiladas que muestra la proyección 2025 vs. 2026 por carrera.";
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Inicialización y Animaciones
+        window.onload = function() {
+            // Animación de las métricas
+            animateValue("metric-convenios", 0, metrics.conveniosVigentes, 1000);
+            animateValue("metric-proyectos", 0, metrics.proyectos2025, 1500);
+            animateValue("metric-alumnos", 0, metrics.alumnos2026, 2000);
+
+            // Obtener y actualizar el contenido del gráfico de convenios
+            const balanceCard = document.querySelector('#convenios .card');
+            const donutChart = balanceCard.querySelector('.relative.h-28');
+            const donutTotal = balanceCard.querySelector('.relative.h-28 span');
+            const vigentesCount = balanceCard.querySelector('.w-1\/2.space-y-2 p:nth-child(1) .font-bold');
+            const vencidosCount = balanceCard.querySelector('.w-1\/2.space-y-2 p:nth-child(2) .font-bold');
+            const vencidosText = balanceCard.querySelector('.w-1\/2.space-y-2 p:nth-child(3)');
+
+            // Aplicar nuevos valores al DOM
+            if (donutChart) {
+                donutChart.style.background = `conic-gradient(#B31B1B 0% ${porcentajeVigentes}%, #6C757D ${porcentajeVigentes}% 100%)`;
+            }
+            if (donutTotal) {
+                donutTotal.textContent = totalConvenios;
+            }
+            if (vigentesCount) {
+                vigentesCount.textContent = `${metrics.conveniosVigentes} (${porcentajeVigentes.toFixed(1)}%)`;
+            }
+            if (vencidosCount) {
+                vencidosCount.textContent = `${10} (${porcentajeVencidos.toFixed(1)}%)`;
+            }
+            if (vencidosText) {
+                 vencidosText.textContent = `Dato clave: La renovación de los ${10} convenios vencidos es prioritaria.`;
+            }
+
+            // Ajuste del separador animado
+            const separator = document.querySelector('.separator-line');
+            setTimeout(() => {
+                separator.style.width = '200px'; 
+            }, 500); 
+        };
+    </script>
+</body>
+</html>
