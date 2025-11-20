@@ -112,6 +112,7 @@
                 <span class="text-2xl font-extrabold text-gray-800">UFDI DIRIS LC</span>
             </div>
             <nav class="space-x-6 text-base font-semibold hidden md:flex">
+                <a href="#anuncios" class="text-gray-600 hover:text-accent transition duration-150">Anuncios</a>
                 <a href="#convenios" class="text-gray-600 hover:text-accent transition duration-150">Convenios</a>
                 <a href="#proyectos" class="text-gray-600 hover:text-accent transition duration-150">Investigación</a>
                 <a href="#formacion" class="text-gray-600 hover:text-accent transition duration-150">Campos Clínicos</a>
@@ -174,6 +175,68 @@
 
     <!-- Contenedor Principal de Contenido -->
     <main class="container mx-auto px-4 py-16">
+
+        <!-- Sección de Anuncios Importantes (NUEVA SECCIÓN) -->
+        <section id="anuncios" class="mb-20">
+            <div class="bg-red-50 border-l-8 border-red-600 p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                
+                <!-- Icono de Alerta -->
+                <div class="flex-shrink-0">
+                    <i class="fas fa-calendar-check text-5xl text-red-600"></i>
+                </div>
+                
+                <!-- Título y Descripción -->
+                <div class="flex-grow">
+                    <h2 class="text-2xl font-black text-red-600 mb-1 flex items-center">
+                        <i class="fas fa-exclamation-circle text-xl mr-2"></i> ANUNCIO IMPORTANTE: CRONOGRAMA DE REUNIONES
+                    </h2>
+                    <p class="text-lg text-gray-700 font-medium">
+                        Se convoca a las facultades para la reunión de coordinación de Campos Clínicos según el siguiente detalle:
+                    </p>
+                </div>
+
+                <!-- Detalle del Cronograma -->
+                <div class="flex-shrink-0 bg-white p-4 rounded-lg shadow-md w-full md:w-auto">
+                    <ul class="text-sm text-gray-700 font-medium space-y-2">
+                        <!-- MIÉRCOLES 26 DE NOVIEMBRE -->
+                        <li class="border-b pb-1 border-gray-100">
+                            <span class="font-bold text-primary">MIÉRCOLES 26 NOV.</span>
+                            <ul class="ml-4 list-disc space-y-1 mt-1">
+                                <li>Medicina Humana: <span class="font-black text-accent">10:00 AM</span></li>
+                                <li>Odontología: <span class="font-black text-accent">12:00 PM</span></li>
+                            </ul>
+                        </li>
+                        <!-- JUEVES 27 DE NOVIEMBRE -->
+                        <li class="border-b py-1 border-gray-100">
+                            <span class="font-bold text-primary">JUEVES 27 NOV.</span>
+                            <ul class="ml-4 list-disc space-y-1 mt-1">
+                                <li>Enfermería: <span class="font-black text-accent">10:00 AM</span></li>
+                                <li>Obstetricia: <span class="font-black text-accent">14:00 PM</span></li>
+                            </ul>
+                        </li>
+                        <!-- VIERNES 28 DE NOVIEMBRE -->
+                        <li class="border-b py-1 border-gray-100">
+                            <span class="font-bold text-primary">VIERNES 28 NOV.</span>
+                            <ul class="ml-4 list-disc space-y-1 mt-1">
+                                <li>Nutrición: <span class="font-black text-accent">11:00 AM</span></li>
+                                <li>Tecnología Médica: <span class="font-black text-accent">14:00 PM</span></li>
+                            </ul>
+                        </li>
+                        <!-- LUNES 01 DE DICIEMBRE -->
+                        <li class="pt-1">
+                            <span class="font-bold text-primary">LUNES 01 DIC.</span>
+                            <ul class="ml-4 list-disc space-y-1 mt-1">
+                                <li>Farmacia: <span class="font-black text-accent">09:00 AM</span></li>
+                                <li>Psicología: <span class="font-black text-accent">10:00 AM</span></li>
+                                <li>Biología: <span class="font-black text-accent">12:00 PM</span></li>
+                                <li>Servicio Social / Otros: <span class="font-black text-accent">14:00 PM / 15:00 PM</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
 
         <!-- Sección de Convenios -->
         <section id="convenios" class="mb-20">
@@ -322,6 +385,7 @@
                     <p class="text-xl font-extrabold text-gray-600 mt-2">Estudiantes proyectados para 2026</p>
                     <div class="mt-6 pt-4 border-t border-gray-200">
                         <p class="text-base font-bold text-gray-700">Crecimiento Total vs. 2025 (1,580 alumnos):</p>
+                        <!-- CORREGIDO: 2582 - 1580 = 1002 -->
                         <p class="text-3xl font-black text-green-600 flex items-center justify-center">
                             <i class="fas fa-arrow-up text-xl mr-2"></i> +1,002
                         </p>
@@ -422,8 +486,7 @@
             conveniosVigentes: 31, 
             conveniosVencidos: 10,
             proyectos2025: 126, // Proyectos ingresados 2025
-            // ACTUALIZADO PARA COINCIDIR CON TU CAPTURA DE PANTALLA
-            alumnos2026: 1439, // Total proyectado 2026
+            alumnos2026: 2582, // Total proyectado 2026
         };
         
         // CÁLCULOS PARA LA GRÁFICA CIRCULAR DE CONVENIOS
@@ -499,8 +562,6 @@
             animateValue("metric-proyectos", 0, metrics.proyectos2025, 1200);
             animateValue("metric-alumnos", 0, metrics.alumnos2026, 1800);
             
-            // NOTA: Ajusté la data de alumnos en JS a 1439 para coincidir con tu captura de pantalla.
-
             // Ajuste dinámico del gráfico de dona
             const balanceCard = document.querySelector('#convenios .card');
             const donutChart = balanceCard.querySelector('.relative.h-32');
